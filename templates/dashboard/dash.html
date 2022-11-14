@@ -1,0 +1,97 @@
+{% load static %}
+ 
+{% block titulo %}
+  <title>DASHBOARD</title>
+{% endblock %}
+ 
+<!-- Background -->
+{% block imgbg %}
+  <div data-bg="https://static.vecteezy.com/system/resources/thumbnails/002/019/067/original/dark-world-map-animate-background-free-video.jpg" 
+  class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %}
+ 
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+ 
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+
+
+      {% include "dashboard/campanario.html" %}
+      <!-- Envoltura de la página -->
+      <div id="wrapper">
+        <!-- Envoltura de contenido -->
+        <div id="content-wrapper" class="d-flex flex-column">
+          <!-- Contenido principal -->
+          <div id="content">
+            <!-- Fila de contenido -->
+              <div class="row">
+                <div class="col">
+                  <div class="card">
+                      <div class="text-center">
+                        RUTA 1      
+                      </div>
+                      <div class="card-footer" style="background:skyblue;"> 
+                        <div align="center">
+                          01
+                         <img src="{% static 'img/transporte-publico.png' %}" width="50" height="40">
+                         0.45 KM  
+                        </div>
+                      </div>
+ 
+                      <div class="text-center">
+                        RUTA 2    
+                      </div>
+                      <div class="card-footer" style="background:blanchedalmond;">
+                        <div align="center">
+                          02
+                         <img src="{% static 'img/transporte-publico.png' %}" width="50" height="40">
+                         1.02 KM  
+                        </div>
+                      </div>
+ 
+                      <div class="text-center">
+                        RUTA 3    
+                      </div>
+                      <div class="card-footer" style="background:pink;">
+                        <div align="center">
+                          03
+                         <img src="{% static 'img/transporte-publico.png' %}" width="50" height="40">
+                         1.20 KM
+                        </div>
+                      </div>
+ 
+                      <div class="text-center" >
+                        RUTA 4    
+                      </div>
+                      <div class="card-footer" style="background:lightgreen;">
+                        <div align="center">
+                          04
+                         <img src="{% static 'img/transporte-publico.png' %}" width="50" height="40">
+                         1.35 KM
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                  
+            <div class="col">
+              {% include "dashboard/mapa_camapanario.html" %}
+            </div>
+
+          </div>
+          <div class="col" align="center" >
+            <img  src="{% static 'img/logo.png' %}" width="170" height="100">
+          </div>
+        </div>  
+      </div>          
+  </div>    
+</div>
+ 
+ 
+{% endblock %}
+ 
+{% block contenido %}
+{% endblock %}
+ 

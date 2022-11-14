@@ -1,0 +1,40 @@
+{% load static %}
+{% include "metaetiquetas.html" %}
+{% block titulo %}
+  <title>INNO-TEK MOBIL</title>
+{% endblock %}
+
+<!-- Estilos -->
+<link rel="stylesheet" href="/static/css/index.css">
+
+<div class="top-bar">
+    {% include "navbar.html" %}
+    {% include "funciones.html" %}
+</div>
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %}
+  <div class="hero-wrapper-single hero-wrapper-inner">
+    <div class="container">
+      <div class="theme-box">
+      </div>
+    </div>   
+  <div>
+  {% block enunciado %}  
+  <h1 class="modal-title" id="suscribeModel290Label">Aplicación web para la gestión de la flota de autobuses</p>de las empresas de transporte público.</h1>
+  {% endblock %}
+  </div>
+  </div>
+</div>
+<!-- End background -->
+
+{% block formulario %}
+{% endblock %}
+
+{% block contenido %}
+  {% include "opciones.html" %}
+  {% include "soporte.html" %}
+  {% include "footer.html" %}
+{% endblock %}

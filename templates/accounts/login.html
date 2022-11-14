@@ -1,0 +1,37 @@
+{% extends "contenedor.html" %}
+
+{% load static %}
+ 
+{% block titulo %}
+    <title>Inicio de sesión</title>
+{% endblock %}
+ 
+{% block imagen %}
+    <img src="{% static 'img/login.png' %}" width="500" height="490">
+{% endblock %}
+ 
+{% block form %}
+<br>
+    <h4 class="mt-6 text-center text-3xl font-extrabold text-gray-900">Iniciar sesión</h4>               
+    <hr>
+ 
+    <form  method="POST" action="{% url 'login' %}">
+        {% csrf_token %}
+        <div class="wrap-input100 validate-input" data-validate = "Enter username"> 
+            <input class="input100" type="text" name="username" placeholder="User name">
+            <span class="focus-input100" data-placeholder="&#xe82a;"></span>
+        </div>
+        <br>
+        <div class="wrap-input100 validate-input" data-validate="Enter password">
+            <input class="input100" type="password" name="password" placeholder="Password"> 
+            <span class="focus-input100" data-placeholder="&#xe80f;"></span>
+        </div>
+        <br>
+        <div class = "text-center">  
+            <button type="submit" class="btn btn-primary" >Iniciar sesión</button>
+        </div>
+        <br>
+        <a href="{% url 'register' %}">¿No tienes una cuenta? ¡Regístrate!</a>
+    </form>
+    
+{% endblock %}

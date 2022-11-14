@@ -1,0 +1,5 @@
+smtp.gmail.com  
+True  
+587  
+innotekmobil@gmail.com  
+PASSWORD

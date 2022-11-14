@@ -1,0 +1,57 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Adjuntar archivos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container">
+	  <h1 class="text-center">Adjuntar archivos</h1>
+              
+        <!-- CRUD -->
+        <form method="post" enctype="multipart/form-data">
+      
+        {% csrf_token %}
+        <div class="form-group">
+          <label for="registro_fotografico" class="txt_negrita">Fotos del vehículo</label>
+          {{ form.registro_fotografico|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+        </div>
+        <div class="form-group">
+          <label for="soat" class="txt_negrita">Seguro del vehículo (Soat)</label>
+          {{ form.soat|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="tecnomecanico" class="txt_negrita">Tecnomecánica del vehículo</label>
+          {{ form.tecnomecanico|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="identificacion_propietario" class="txt_negrita">Documento de identidad del propietario</label>
+          {{ form.identificacion_propietario|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="tarjeta_propiedad" class="txt_negrita">Tarjeta de propiedad</label>
+          {{ form.tarjeta_propiedad|add_class:"form-control" }}
+        </div>
+        {% if perms.administrador.add_crear%}
+        <button type="submit" class="btn btn-secondary">Aceptar</button> 
+        {% endif%}
+        <a href="./" type="submit" class="btn btn-dark">Cancelar</a>
+      <div><br></div>
+      <!-- FIN DEL CRUD -->
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

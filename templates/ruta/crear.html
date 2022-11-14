@@ -1,0 +1,70 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Crear ruta</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container"> 
+	  <h1 class="text-center">Crear ruta</h1>
+        <!-- CRUD -->
+        <form method="post" enctype="multipart/form-data">
+        {% csrf_token %}
+        
+          <div class="form-group">
+            <label form="inicio_ruta" class="txt_negrita">Inicio</label>
+            {{ form.inicio_ruta|add_class:"form-control" }}
+          </div>
+          <div class="form-group">
+            <label form="retorno_ruta" class="txt_negrita">Retorno</label>
+            {{ form.retorno_ruta|add_class:"form-control" }}
+          </div>
+          <div class="form-group">
+            <label form="fin_ruta" class="txt_negrita">Fin</label>
+            {{ form.fin_ruta|add_class:"form-control" }}
+          </div>
+          <div class="form-group">
+            <label form="numero_ruta" class="txt_negrita">Número</label>
+            {{ form.numero_ruta|add_class:"form-control" }} 
+          </div>
+          <div class="form-group">
+            <label form="distancia_kilometros" class="txt_negrita">Distancia en kilómetros</label>
+            {{ form.distancia_kilometros|add_class:"form-control" }} 
+          </div>
+          <div class="form-group">
+            <label form="tiempo_estimado" class="txt_negrita">Tiempo estimado</label>
+            {{ form.tiempo_estimado|add_class:"form-control" }} 
+          </div>
+          <div class="form-group">
+            <label form="numero_vueltas" class="txt_negrita">Número de vueltas</label>
+            {{ form.numero_vueltas|add_class:"form-control" }} 
+          </div>
+          <div class="form-group">
+            <label form="vehiculo_idvehiculo" class="txt_negrita">Identificación del vehículo</label>
+            {{ form.vehiculo_idvehiculo|add_class:"form-control" }}
+          </div>
+          {% if perms.administrador.add_crear%}
+          <button type="submit" class="btn btn-secondary">Aceptar</button> 
+          {% endif%}
+          <a href="./" type="submit" class="btn btn-dark">Cancelar</a>
+        </form>
+        <div><br></div>
+
+        <!-- FIN DEL CRUD -->
+{% endblock %}
+	
+{% block contenido %}
+{% endblock %}

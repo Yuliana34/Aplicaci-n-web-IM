@@ -1,0 +1,67 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Ver vehículo</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container">
+	  <h1 class="text-center">Detalles del vehículo</h1>
+    <div><br></div>
+    
+<!-- Envoltura de la página -->
+<div id="wrapper">
+  <!-- Envoltura de contenido -->
+  <div id="content-wrapper" class="d-flex flex-column">
+    <!-- Contenido principal -->
+    <div id="content">
+      <!-- Fila de contenido -->
+          <div class="col">
+            <div class="card">
+              <div class="card-body">
+              
+                  <!-- CRUD -->      
+                  <p><span class="txt_negrita">Código  de vehículo:</span> <br> {{object.idvehiculo}}</p>
+                  <p><span class="txt_negrita">Número de orden:</span> <br> {{object.numero_orden}}</p>
+                  <p><span class="txt_negrita">Número de licencia de transito:</span> <br> {{object.numero_licencia_transito}}</p>
+                  <p><span class="txt_negrita">Nombre de propietario:</span> <br> {{object.nombre_propietario}}</p>
+                  <p><span class="txt_negrita">Identificación de propietario:</span> <br> {{object.identificacion_propietario}}</p>
+                  <p><span class="txt_negrita">Placa:</span> <br> {{object.placa}}</p>
+                  <p><span class="txt_negrita">Marca:</span> <br> {{object.marca}}</p>
+                  <p><span class="txt_negrita">Linea:</span> <br> {{object.linea}}</p>
+                  <p><span class="txt_negrita">Modelo:</span> <br> {{object.modelo}}</p>
+                  <p><span class="txt_negrita">Capacidad de personas:</span> <br> {{object.capacidad_personas}}</p>
+                  <p><span class="txt_negrita">Clase de vehículo:</span> <br> {{object.clase_vehiculo}}</p>
+                  <p><span class="txt_negrita">Cilindraje:</span> <br> {{object.cilindraje}}</p>
+                  <p><span class="txt_negrita">Número de chasis:</span> <br> {{object.numero_chasis}}</p>
+                  <p><span class="txt_negrita">Tipo de combustible:</span> <br> {{object.tipo_combustible}}</p>
+                  <p><span class="txt_negrita">Número de motor:</span> <br> {{object.numero_motor}}</p>
+                  <p><span class="txt_negrita">Tipo de carroceria:</span> <br> {{object.tipo_carroceria}}</p>
+                  <p><span class="txt_negrita">Color:</span> <br> {{object.color}}</p>
+                  <p><span class="txt_negrita">Vin:</span> <br> {{object.vin}}</p>
+                  <p><span class="txt_negrita">Número de ejes:</span> <br> {{object.numero_ejes}}</p>
+                  <p><span class="txt_negrita">Código del conductor:</span> <br> {{object.conductor_idconductor}}</p>
+                  <p><span class="txt_negrita">Código del documento adjunto:</span> <br> {{object.adjuntar_archivos_iddocumento}}</p>
+                  <p><span class="txt_negrita">Código de ubicación:</span> <br> {{object.ubicacion_idubicacion}}</p>
+              </div>
+      </div><br>
+      <a href="../" type="submit" class="btn btn-dark">Volver</a>
+        <div><br></div>
+
+{% endblock %}
+  
+{% block contenido %}
+{% endblock %}

@@ -1,0 +1,66 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+  <title>Cargar documentos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+    {% include "estilos.html" %}
+    <p>
+    <h1 class="text-center">Documentos cargados</h1>
+    
+    {% include "mensaje.html" %}    
+
+    <div>
+		<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+			<thead>
+                <tr>
+                  	<th>Opciones</th>
+					<th>#</th>
+					<th>Código de documento</th>
+					<th>Certificado de alcoholemia</th>
+					<th>Certificado de sustancias psicoactivas</th>
+				</tr>
+			</thead>
+			<tbody>
+				{% for cargar_documento in object_list %}
+				<tr>
+					<td>
+						<div class="btn-group">
+							<a href="detalle/{{cargar_documento.iddocumento}}" title="Ver" type="button" class="btn btn-secondary">Ver</a>
+							{% if perms.administrador.change_cargar%}
+							<a href="editar/{{cargar_documento.iddocumento}}" title="Editar" type="button" class="btn btn-dark">Editar</a>
+							{% endif%}
+						</div>
+					</td>
+					<td>{{ forloop.counter }}</td>
+					<td>{{ cargar_documento.iddocumento}}</td>
+					<td>{{ cargar_documento.certificado_alcoholemia }}</td>
+					<td>{{ cargar_documento.certificado_sustancias_psicoactivas }}</td>
+				</tr>
+				{% endfor %}
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+<br>
+<div align="center" class="btn_crear mb-3">
+	{% if perms.administrador.add_cargar%}
+<a href="crear" type="button" class="btn btn-secondary">Cargar documentos</a>
+{% endif%}
+</div><br>
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

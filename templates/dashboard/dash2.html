@@ -1,0 +1,78 @@
+{% load static %}
+ 
+{% block titulo %}
+  <title>DASHBOARD2</title>
+{% endblock %}
+ 
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="https://static.vecteezy.com/system/resources/thumbnails/002/019/067/original/dark-world-map-animate-background-free-video.jpg" 
+  class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %}
+ 
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+ 
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+
+
+      {% include "dashboard/campanario.html" %}
+      <!-- Envoltura de la página -->
+      <div id="wrapper">
+        <!-- Envoltura de contenido -->
+        <div id="content-wrapper" class="d-flex flex-column">
+          <!-- Contenido principal -->
+          <div id="content">
+            <!-- Fila de contenido -->
+                  <div class="card">
+                    <div class="table-responsive">
+                      <table class=" table table-bordered ">
+
+                          <tr class="text-center">
+                            <th>RUTAS</th>
+                            <th><img  src="{% static 'img/reloj.png' %}" width="30" height="30">  TIEMPO DE ESPERA</th>
+                            <th>DISTANCIA(KM)</th>
+                            <th><img  src="{% static 'img/autobus.png' %}" width="30" height="30">PROXIMA LLEGADA</th>
+                          </tr>
+
+                          <tr class="text-center">
+                            <th>1</th>
+                            <th>0 a 5 min</th>
+                            <th>0.45 KM</th>
+                            <th>05</th>
+                          </tr>
+
+                          <tr class="text-center">
+                            <th>2</th>
+                            <th>5 a 9 min</th>
+                            <th>1.02 KM </th>
+                            <th>20</th>
+                          </tr>
+
+                          <tr class="text-center">
+                            <th>3</th>
+                            <th>9 a 13 min</th>
+                            <th>1.16 KM</th>
+                            <th>12</th>
+                          </tr>
+
+                          <tr class="text-center">
+                            <th>4</th>
+                            <th>13 a 17 min</th>
+                            <th>1.32 KM</th>
+                            <th>37</th>
+                          </tr>
+                      </table>
+                      {% include "dashboard/anuncios.html" %}
+          </div>
+        </div>  
+      </div>          
+  </div>    
+</div>
+{% endblock %}
+{% block contenido %}
+{% endblock %}
+

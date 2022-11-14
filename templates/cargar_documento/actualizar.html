@@ -1,0 +1,47 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Editar documento cargado</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container">
+	  <h1 class="text-center">Editar documento cargado</h1>
+    <div><br></div>
+   
+      <!-- CRUD -->
+      <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+      <div class="form-group">
+        <label for="certificado_alcoholemia" class="txt_negrita">Certificado de alcoholemia</label>
+        {{ form.certificado_alcoholemia|add_class:"form-control" }}
+      </div>
+      <div class="form-group">
+        <label for="certificado_sustancias_psicoactivas" class="txt_negrita">Certificado de sustancias psicoactivas</label>
+        {{ form.certificado_sustancias_psicoactivas|add_class:"form-control" }}
+      </div>
+      {% if perms.administrador.change_actualizar%}
+      <button type="submit" class="btn btn-secondary">Aceptar</button>
+      {% endif%}
+      <a href="../" type="submit" class="btn btn-dark">Volver</a>
+    <div><br></div> 
+    </form>
+    <!-- FIN DEL CRUD -->
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

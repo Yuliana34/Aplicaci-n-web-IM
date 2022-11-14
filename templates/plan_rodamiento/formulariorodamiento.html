@@ -1,0 +1,97 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+  <title>Plan de rodamiento</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+    {% include "estilosplan.html" %}
+    <p>
+    <h1 class="text-center">Plan de rodamiento</h1>
+    
+    {% include "mensaje.html" %}    
+
+    <div class="table-responsive" id="mydatatable-container">
+        <table class="records_list table table-striped table-bordered table-hover" id="mydatatable">
+            <thead>
+                <tr>
+                  <th>Opciones</th>
+                  <th>#</th>
+                  <th>Código del plan de rodamiento</th>
+                  <th>Fecha de inicio</th>
+                  <th>Hora de salida del vehículo</th>
+                  <th>Lugar de inicio de la ruta</th>
+                  <th>Número del vehículo asignado al conductor</th>
+                  <th>Número de la ruta</th>
+                  <th>Código del vehículo</th>
+                  <th>Código de la ruta</th>
+                  <th>Código de documento</th>
+                </tr>
+            </thead>
+
+            <tbody>
+                {% for plan_rodamiento in object_list %}
+                <tr>
+                      <td>
+                          <form method="POST" action="eliminar/{{plan_rodamiento.idplan_rodamiento}}">
+                            {% csrf_token %}
+                            <div class="btn-group">
+                                {% if perms.administrador.change_plan_rodamiento%}
+                                <a href="editar/{{plan_rodamiento.idplan_rodamiento}}" title="Editar" type="button" class="btn btn-secondary">Editar </a>
+                                {% endif%}
+                                {% if perms.administrador.delete_plan_rodamiento%}
+                                <button class="btn btn-danger" onclick="return eliminar();" type="submit">Eliminar</button>
+                                {% endif%}
+                            </div>
+                          </form>
+                      </td>
+                      <td>{{forloop.counter}}</td>
+                      <td>{{ plan_rodamiento.idplan_rodamiento }}</td>
+                      <td>{{ plan_rodamiento.fecha }}</td>
+                      <td>{{ plan_rodamiento.hora }}</td>
+                      <td>{{ plan_rodamiento.inicio_ruta }}</td>
+                      <td>{{ plan_rodamiento.numero_vehiculo }}</td>
+                      <td>{{ plan_rodamiento.numero_ruta }}</td>
+                      <td>{{ plan_rodamiento.vehiculo_idvehiculo }}</td>
+                      <td>{{ plan_rodamiento.ruta_idruta }}</td>
+                      <td>{{ plan_rodamiento.cargar_documento_iddocumento }}</td>
+                </tr>    
+                {% endfor %}  
+                </tbody>
+            </table>
+        </div>
+    </div>
+</div>  
+
+<script type="text/javascript">
+    function eliminar() {
+    var x = confirm("¿Eliminar plan de rodamiento?");
+    if (x)
+        return true;
+    else
+        return false;}
+</script>
+<p>
+
+    <div align="left" class="btn_crear mb-3">
+        {% if perms.administrador.add_plan_rodamiento%}
+    <a href="crear" type="button" class="btn btn-secondary">Agregar</a>
+    {% endif%}
+    {% if perms.administrador.add_plan_rodamiento%}
+    <a href="/cargar_documento/" type="button" class="btn btn-success">Cargar documentos</a>
+    {% endif%}
+    <hr>
+{% endblock %}
+	
+{% block contenido %}
+{% endblock %}

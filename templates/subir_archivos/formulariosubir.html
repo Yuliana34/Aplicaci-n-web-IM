@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Subir archivos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+  {% include "estilos.html" %}
+  <p>
+  <h1 class="text-center">Archivos subidos disponibles</h1>
+
+  {% include "mensaje.html" %}
+    
+  <div>
+	<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Opciones</th>
+				<th>#</th>
+				<th>Codigo  de documento subido</th>
+				<th>Documento de identidad</th>
+				<th>Experiencia laboral</th>
+				<th>Licencia de conduccion</th>
+			  </tr>
+			</thead>
+			<tbody>
+				{% for subir_archivos in object_list %}
+					<tr>
+						<td>
+							<div class="btn-group">
+								<a href="detalle/{{subir_archivos.iddocumento}}" title="Ver" type="button" class="btn btn-secondary">Ver </a>
+								{% if perms.administrador.change_subir%}
+								<a href="editar/{{subir_archivos.iddocumento}}" title="Editar" type="button" class="btn btn-dark">Editar </a>
+								{% endif%}
+							</div>
+						</td>
+						<td>{{ forloop.counter }}</td>
+						<td>{{ subir_archivos.iddocumento }}</td>
+						<td>{{ subir_archivos.documento_identidad }}</td>
+						<td>{{ subir_archivos.experiencia_laboral }}</td>
+						<td>{{ subir_archivos.licencia_conduccion }}</td>
+					</tr>
+				{% endfor %}
+			
+				</tbody>
+			</table>
+		</div>
+	</div>
+</div>
+<br>
+<div align="center" class="btn_crear mb-3">
+	{% if perms.administrador.change_subir%}
+	<a href="crear" type="button" class="btn btn-secondary">Subir archivos</a>
+	{% endif%}
+</div><br>
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

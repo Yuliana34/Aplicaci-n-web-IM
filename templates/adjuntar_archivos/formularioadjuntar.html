@@ -1,0 +1,74 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Adjuntar archivos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+	{% include "estilos.html" %}
+	<p>
+	<h1 class="text-center">Archivos adjuntos disponibles</h1>
+
+	{% include "mensaje.html" %}
+
+	<div>
+		<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+			<thead>
+			<tr>
+				<th>Opciones</th>
+				<th>#</th>
+				<th>Código del documento</th>
+				<th>Fotos del vehículo</th>
+				<th>Seguro del vehículo (Soat)</th>
+				<th>Tecnomecánica del vehículo</th>
+				<th>Documento de identidad del propietario</th>
+				<th>Tarjeta de propiedad</th>
+			</tr>
+		</thead>
+		<tbody>
+		
+			{% for adjuntar_archivos in object_list %}
+			<tr>
+				<td>
+					<div class="btn-group">
+						<a href="detalle/{{adjuntar_archivos.iddocumento}}" title="Ver" type="button" class="btn btn-secondary">Ver </a>
+						{% if perms.administrador.change_adjuntar%}
+						<a href="editar/{{adjuntar_archivos.iddocumento}}" title="Editar" type="button" class="btn btn-dark">Editar </a>
+						{% endif%}
+					</div>
+				</td>		
+				<td>{{forloop.counter}}</td>
+				<td>{{ adjuntar_archivos.iddocumento }}</td>
+				<td> <img src="/static/img/{{ adjuntar_archivos.registro_fotografico}}" width="100" height="100"/></td>
+				<td>{{ adjuntar_archivos.soat }}</td>
+				<td>{{ adjuntar_archivos.tecnomecanico }}</td>
+				<td>{{ adjuntar_archivos.identificacion_propietario }}</td>
+				<td>{{ adjuntar_archivos.tarjeta_propiedad }}</td>
+				
+			</tr>
+			{% endfor %}
+		</tbody>
+		</table>
+	</div>
+</div>
+</div>
+	<br>				
+	<div align="center" class="btn_crear mb-3">	
+		{% if perms.administrador.add_adjuntar%}
+		<a href="crear" type="button" class="btn btn-secondary">Adjuntar archivos</a>
+		{% endif%}
+	</div><br>
+{% endblock %}
+	
+{% block contenido %}
+{% endblock %}

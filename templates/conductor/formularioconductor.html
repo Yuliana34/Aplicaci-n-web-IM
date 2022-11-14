@@ -1,0 +1,90 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Conductores</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+  {% include "estilos.html" %}
+  <p>
+  <h1 class="text-center">Conductores disponibles</h1>
+
+  {% include "mensaje.html" %}
+    
+  <div>
+		<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Opciones</th>
+                <th>#</th>
+                <th>Código</th>
+                <th>Nombres</th>
+                <th>Apellidos</th>
+                <th>Correo electrónico</th>
+                <th>Número de documento de identidad</th>
+                <th>Fecha de expedición del documento</th>
+                <th>Lugar de expedición del documento</th>
+                <th>Fecha de nacimiento</th>
+                <th>Edad</th>
+                <th>Dirección</th>
+                <th>Número de teléfono</th>
+                <th>Número de teléfono alterno</th>                     
+                <th>Código del turno</th>
+                <th>Código del documento subido</th>
+                <th>Código del departamento</th>       
+              </tr>
+            </thead>
+            <tbody>
+                {% for conductor in object_list %}
+                <tr>
+                    <td>
+                        <div class="btn-group">
+                          <a href="detalle/{{conductor.idconductor}}"class="btn btn-secondary">Ver</a>
+                          {% if perms.administrador.change_conductor%}
+                          <a href="editar/{{conductor.idconductor}}" class="btn btn-dark">Editar</a>
+                          {% endif%}
+                        </div>
+                    </td>
+                    <td>{{ forloop.counter }}</td>
+                    <td>{{ conductor.idconductor }}</td>
+                    <td>{{ conductor.nombres }}</td>
+                    <td>{{ conductor.apellidos }}</td>
+                    <td>{{ conductor.correo_electronico }}</td>
+                    <td>{{ conductor.numero_identificacion }}</td>
+                    <td>{{ conductor.fecha_expedicion_documento }}</td>
+                    <td>{{ conductor.lugar_expedicion_documento }}</td>
+                    <td>{{ conductor.fecha_nacimiento }}</td>
+                    <td>{{ conductor.edad }}</td>
+                    <td>{{ conductor.direccion }}</td>
+                    <td>{{ conductor.telefono }}</td>
+                    <td>{{ conductor.telefono_alterno }}</td>
+                    <td>{{ conductor.turno_idturno }}</td>
+                    <td>{{ conductor.subir_archivos_iddocumento }}</td>
+                    <td>{{ conductor.departamento_iddepartamento }}</td>
+						    </tr>
+						    {% endfor %}
+					</tbody>
+				</table>
+			</div>
+		</div>
+	</div>
+  <br>
+  <div align="center" class="btn_crear mb-3">
+    {% if perms.administrador.add_conductor%}
+    <a href="crear" type="button" class="btn btn-secondary">Crear conductor</a>
+    {% endif%}
+  </div><br>
+{% endblock %}
+    
+{% block contenido %}
+{% endblock %}

@@ -1,0 +1,52 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Editar archivos subidos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container">
+	  <h1 class="text-center">Editar archivos subidos</h1>
+    <div><br></div>
+              
+            <!-- CRUD -->
+            <form method="post" enctype="multipart/form-data">
+              
+              {% csrf_token %}
+
+                <div class="form-group">
+                  <label for="documento_identidad" class="txt_negrita">Documento de identidad</label>
+                  {{ form.documento_identidad|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto --> 
+                </div>
+                <div class="form-group">
+                  <label for="experiencia_laboral" class="txt_negrita">Experiencia laboral</label>
+                  {{ form.experiencia_laboral|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                </div>
+                <div class="form-group">
+                  <label for="licencia_conduccion" class="txt_negrita">Licencia de conducción</label>
+                  {{ form.licencia_conduccion|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+                </div>
+                {% if perms.administrador.change_actualizar%}
+                <button type="submit" class="btn btn-secondary">Aceptar</button>
+                {% endif%}
+                <a href="../" type="submit" class="btn btn-dark">Volver</a>
+              <div><br></div> 
+              </form>
+              <!-- FIN DEL CRUD -->
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

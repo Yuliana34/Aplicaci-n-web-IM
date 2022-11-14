@@ -1,0 +1,97 @@
+{% extends 'base.html' %}
+{% include "metaetiquetas.html" %}
+
+{% block navbar%}
+{% include "estilos.html" %}
+{% endblock navbar%}
+
+{% load static %}
+{% load tailwind_tags %}
+{% load tailwind_filters %}
+{% load humanize %}
+
+{% block title %}{{user.username}} Edit Profile{% endblock title %}
+
+{% block content %}
+
+<main class="container ">
+  <section class="seccion-perfil-usuario">
+    <div class="perfil-usuario-header-edit">
+        <div class="perfil-usuario-portada">
+            <form class="form-vertical dark:text-dark-txt" method="post"  enctype="multipart/form-data">
+                {% csrf_token %}
+                <div class="mt-1 sm:mt-0 sm:col-span-2">
+                    <img class="h-28 w-full bg-cover" src="{{user.profile.banner.url}}" alt="{{profile.user.username}} Banner Picture" width="500" height="300">
+                    {{form.banner}}
+                </div>
+            </div>        
+                <!--Profile Picture-->
+                <div class="perfil-usuario-avatar">
+                        <div class="mt-4 sm:grid sm:grid-cols-3 sm:gap-4 sm:items-center sm:border-t dark:border-dark-third  border-gray-200 sm:pt-5">
+                        <label for="photo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                            Foto
+                        </label>
+                        <div class="mt-1 sm:mt-0 sm:col-span-2">
+                            <div class="flex items-center">
+                            <span class="mr-4 h-18 w-18 rounded-full overflow-hidden dark:bg-dark-third bg-gray-100">
+                                <img src="{{user.profile.picture.url}}" alt="">
+                            </span>
+                            {{form.picture}}
+                            </div>
+                        </div>
+                        </div>
+        </div>
+    </div>
+
+<!--DATOS DEL USUARIO-->
+    <div class="perfil-usuario-body">
+        <div class="perfil-usuario-footer">
+            <ul class="lista-datos">
+                    <div class="mt-4">
+                    <label for="first name" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Nombres:
+                    </label>
+                    {{form.first_name}}
+                    </div>
+                    <label for="last name" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Apellidos:
+                    </label>
+                    {{form.last_name}}
+
+                    <label for="bio" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Biografia:
+                    </label>
+                    {{form.bio}}
+                    
+                    <label for="city" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Ubicación:
+                    </label>
+                    {{form.location}}
+
+                    <label for="birthday" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                    Fecha de nacimiento:
+                    </label>
+                    {{form.birthday}}
+            
+                    <label for="cargo" class="block text-sm font-medium dark:text-dark-txt text-gray-700">
+                        Cargo:
+                        </label>
+                        {{form.cargo}}
+                </div>
+                </ul>
+            </div>
+            <div class="control-group">
+                <div class="controls">
+                <a href="{% url 'users:profile' username=user.username %}" class="btn btn-primary">
+                Volver al perfil </a>
+                <button type="submit" class="btn btn-primary">
+                Actualizar </button>
+                </div>
+            </div>
+
+        </div>         
+    </form>
+</div>        
+</section>
+</main>
+{% endblock content %}

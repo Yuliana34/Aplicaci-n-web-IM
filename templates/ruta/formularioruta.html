@@ -1,0 +1,79 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Rutas</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+	<p>
+	<h1 class="text-center">Rutas disponibles</h1>
+
+	{% include "mensaje.html" %}
+	{% include "paginacion.html" %}
+	
+
+	<div>
+		<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+			<thead> 
+			<tr>
+				<th>Opciones</th>
+				<th>#</th>
+				<th>Código</th>
+				<th>Inicio</th>
+				<th>Retorno</th>
+				<th>Fin</th>
+				<th>Número</th>
+				<th>Distancia en kilometros</th>
+				<th>Tiempo estimado</th>
+				<th>Número de vueltas</th>
+				<th>Identificación del vehículo</th>
+			</tr>
+		</thead>
+		<tbody>
+			{% for ruta in object_list %}
+			<tr>
+				<td>
+					<div class="btn-group">
+						<a href="detalle/{{ruta.idruta}}" class="btn btn-secondary">Ver<br></a>
+						{% if perms.administrador.change_ruta%}
+						<a href="editar/{{ruta.idruta}}" class="btn btn-dark">Editar</a>
+						{% endif%}
+					</div>
+				</td>
+				<td>{{ forloop.counter }}</td>
+				<td>{{ ruta.idruta }}</td>
+				<td>{{ ruta.inicio_ruta }}</td>
+				<td>{{ ruta.retorno_ruta }}</td>
+				<td>{{ ruta.fin_ruta }}</td>
+				<td>{{ ruta.numero_ruta }}</td>
+				<td>{{ ruta.distancia_kilometros }}</td>
+				<td>{{ ruta.tiempo_estimado }}</td>
+				<td>{{ ruta.numero_vueltas }}</td>
+				<td>{{ ruta.vehiculo_idvehiculo }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table>
+</div>
+</div>
+</div>
+
+	<div align="center" class="btn_crear mb-3">	
+		{% if perms.administrador.add_ruta%}
+		<a href="crear" type="button" class="btn btn-secondary">Crear ruta</a>
+		{% endif%}
+	</div><br>
+{% endblock %}
+	
+{% block contenido %}
+{% endblock %}

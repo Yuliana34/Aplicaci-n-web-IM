@@ -1,0 +1,28 @@
+#sidebar.active {
+  margin-left: -250px;
+}
+
+#sidebar {
+  min-width: 250px;
+  max-width: 250px;
+  min-height: 100vh;
+}
+
+
+@media (max-width: 768px) {
+  #sidebar {
+      margin-left: -250px;
+  }
+  #sidebar.active {
+      margin-left: 0;
+  }
+}
+
+
+
+#sidebar {
+  /* don't forget to add all the previously mentioned styles here too */
+  background: #7386D5;
+  color: #fff;
+  transition: all 0.3s;
+}

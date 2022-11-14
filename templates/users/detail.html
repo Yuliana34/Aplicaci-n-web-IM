@@ -1,0 +1,74 @@
+{% extends 'users/base.html' %}
+{% include "metaetiquetas.html" %}
+
+{% block navbar%}
+{% include "estilos.html" %}
+{% endblock navbar%}
+
+{% load static %}
+{% load tailwind_tags %}
+{% load tailwind_filters %}
+{% load humanize %}
+
+
+{% block content %}
+<!--PORTADA DE USUARIO-->
+<main class="container ">
+  <section class="seccion-perfil-usuario">
+    <div class="perfil-usuario-header">
+        <div class="perfil-usuario-portada">
+            <div class="perfil-usuario-avatar">
+                <img src="{{profile.picture.url}}" alt="img-avatar">
+            </div>
+<!--EDITAR USUARIO-->
+            <button type="button" class="boton-portada">
+            <div x-data="{ open: false }" @keydown.window.escape="open = false" class=" mt-6 sm:flex-1 sm:min-w-0 sm:flex sm:items-center sm:justify-end sm:space-x-6 sm:pb-1">
+                <div class="mt-6 flex flex-col justify-stretch space-y-3 sm:flex-row sm:space-y-0 sm:space-x-4">
+                    {% if user.is_authenticated and user == profile.user %}
+                    <a href="{% url 'users:edit-profile' %}" >
+                        <span>Editar Mi Perfil</span>
+                    </a>
+                    {% endif %}
+                </div>
+            </div>
+            </button>
+<!--NOMBRE DEL USUARIO-->
+        </div>
+    </div>
+    <div class="perfil-usuario-body">
+        <div class="perfil-usuario-bio">
+            <h3 class="titulo">{{profile.user.username}} 
+              {% if profile.verified == "verified" %}
+                  <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 inline-block text-blue-500" viewBox="0 0 20 20" fill="currentColor">
+                      <path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd" />
+                  </svg>
+              {% endif %}
+            </h3>
+        
+<!--BIOGRAFIA DEL USUARIO-->
+            {% if profile.bio %}
+              <p class="mt-2 max-w-4xl text-sm dark:text-dark-txt text-gray-500">{{profile.bio}}</p>
+            {% endif %}       
+        </div>
+
+<!--DATOS DEL USUARIO-->
+        <div class="perfil-usuario-footer">
+            <ul class="lista-datos">
+              <li><i class="icono fas fa-user"></i> Nombre: {{profile.user.first_name}}</li>
+              <li><i class="icono fas fa-user"></i> Apellidos: {{profile.user.last_name}}</li>
+              <li><i class="icono fas fa-map-signs"></i> Direccion: {{profile.location}}</li>
+              <li><i class="icono fas fa-briefcase"></i> Correo electronico: {{profile.user.email}}</li>
+                
+            </ul>
+            <ul class="lista-datos">
+                <li><i class="icono fas fa-calendar-alt"></i> Fecha de nacimiento: {{profile.birthday}}</li>
+                <li><i class="icono fas fa-user-check"></i> Registro: {{profile.date_created}}</li>
+                <li><i class="icono fas fa-building"></i> Cargo: {{profile.cargo}}</li>
+            </ul>
+        </div> 
+    </div>
+<button type="button" class="boton-salir"><a href="/index/"><span>Volver al inicio</span></a> </button> 
+</section>
+</main>
+
+{% endblock content %}

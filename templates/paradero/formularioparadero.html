@@ -1,0 +1,68 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Paraderos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+	{% include "estilos.html" %}
+	<p>
+	<h1 class="text-center">Paraderos disponibles</h1>
+
+	{% include "mensaje.html" %}
+		
+	<div>
+		<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+			<thead>
+			<tr>
+				<th>Opciones</th>
+				<th>#</th>
+				<th>Código de paradero</th>
+				<th>Nombre</th>
+				<th>Código de ubicacion</th>
+				<th>Código de ruta</th>
+			</tr>
+		</thead>
+		<tbody>
+          {% for paradero in object_list %}
+    	    <tr>
+				<td>
+					<div class="btn-group">
+						<a href="detalle/{{paradero.idparadero}}" title="Ver" type="button" class="btn btn-secondary">Ver </a>
+						{% if perms.administrador.change_paradero%}
+						<a href="editar/{{paradero.idparadero}}" title="Editar" type="button" class="btn btn-dark">Editar </a>
+						{% endif%}
+					</div>
+				</td>
+				<td>{{ forloop.counter }}</td>
+    	        <td>{{ paradero.idparadero }}</td>
+    	        <td>{{ paradero.nombre }}</td>
+    	        <td>{{ paradero.ubicacion_idubicacion }}</td>
+				<td>{{ paradero.ruta_idruta }}</td>
+    	    </tr>
+    	  {% endfor %}
+    	</tbody>
+    	</table>
+	</div>
+</div>
+</div>
+	<br>				
+	<div align="center" class="btn_crear mb-3">	
+		{% if perms.administrador.add_paradero%}
+		<a href="crear" type="button" class="btn btn-secondary">Crear paradero</a>
+		{% endif%}
+	</div><br>
+{% endblock %}
+	
+{% block contenido %}
+{% endblock %}

@@ -1,0 +1,96 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Editar conductor</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container">
+	  <h1 class="text-center">Editar conductor</h1>
+    <div><br></div>
+              
+      <!-- CRUD -->
+      <form method="post" enctype="multipart/form-data">
+      {% csrf_token %}
+
+        <div class="form-group">
+          <label for="nombres" class="txt_negrita">Nombres del conductor</label>
+          {{ form.nombres|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="apellidos" class="txt_negrita">Apellidos del conductor</label>
+          {{ form.apellidos|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="correo_electronico" class="txt_negrita">Correo electrónico</label>
+          {{ form.correo_electronico|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="numero_identificacion" class="txt_negrita">Número de documento de identidad</label>
+          {{ form.numero_identificacion|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="fecha_expedicion_documento" class="txt_negrita">Fecha de expedición del documento</label>
+          {{ form.fecha_expedicion_documento|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="lugar_expedicion_documento" class="txt_negrita">Lugar de expedición del documento</label>
+          {{ form.lugar_expedicion_documento|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="fecha_nacimiento" class="txt_negrita">Fecha de nacimiento</label>
+          {{ form.fecha_nacimiento|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="edad" class="txt_negrita">Edad del conductor</label>
+          {{ form.edad|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="direccion" class="txt_negrita">Dirección</label>
+          {{ form.direccion|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="telefono" class="txt_negrita">Número de teléfono</label>
+          {{ form.telefono|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="telefono_alterno" class="txt_negrita">Número de teléfono alterno</label>
+          {{ form.telefono_alterno|add_class:"form-control" }} <!-- Usamos la librería 'widget_tweaks' para crear esta caja de texto -->
+        </div>
+        <div class="form-group">
+          <label for="turno_idturno" class="txt_negrita">Código del turno</label>
+          {{ form.turno_idturno|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="subir_archivos_iddocumento" class="txt_negrita">Código del documento subido</label>
+          {{ form.subir_archivos_iddocumento|add_class:"form-control" }}
+        </div>
+        <div class="form-group">
+          <label for="departamento_iddepartamento" class="txt_negrita">Código del departamento</label>
+          {{ form.departamento_iddepartamento|add_class:"form-control" }}
+        </div>
+
+        {% if perms.administrador.change_actualizar%}
+        <button type="submit" class="btn btn-secondary">Aceptar</button>
+        {% endif%}
+      <a href="../" type="submit" class="btn btn-dark">Volver</a>
+    <div><br></div> 
+    </form>
+    <!-- FIN DEL CRUD -->
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

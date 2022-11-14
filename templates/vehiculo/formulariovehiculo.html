@@ -1,0 +1,104 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Vehículos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+	{% include "estilos.html" %}
+	<p>
+	<h1 class="text-center">Vehículos disponibles</h1>
+
+	{% include "mensaje.html" %}
+
+	<div>
+		<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+		<thead>
+			<tr>
+				<th>Opciones</th>
+				<th>#</th>
+				<th>Código</th>
+				<th>Número de orden</th>
+				<th>Número de licencia de tránsito</th>
+				<th>Nombre de propietario</th>
+				<th>Identificación de propietario</th>
+				<th>Placa</th>
+				<th>Marca</th>
+				<th>Linea</th>
+				<th>Modelo</th>
+				<th>Capacidad de personas</th>
+				<th>Clase de vehículo</th>
+				<th>Cilindraje</th>
+				<th>Numero de chasis</th>
+				<th>Tipo de combustible</th>
+				<th>Número de motor</th>								
+				<th>Tipo de carroceria</th>
+				<th>Color</th>
+				<th>Vin</th>
+				<th>Número de ejes</th>
+				<th>Código de conductor</th>
+				<th>Código adjuntar archivos del documento</th>
+				<th>Código de ubicación</th>
+			</tr>
+		</thead>
+		<tbody> 
+			{% for vehiculo in object_list %}
+			<tr>
+				<td>
+					<div class="btn-group">
+						<a href="detalle/{{vehiculo.idvehiculo}}" class="btn btn-secondary">Ver </a>
+						{% if perms.administrador.change_vehiculo%}
+						<a href="editar/{{vehiculo.idvehiculo}}" class="btn btn-dark">Editar </a>
+						{% endif%}
+					</div>
+				</td>
+				<td>{{forloop.counter}}</td>
+				<td>{{ vehiculo.idvehiculo }}</td>
+				<td>{{ vehiculo.numero_orden }}</td>
+				<td>{{ vehiculo.numero_licencia_transito }}</td>
+				<td>{{ vehiculo.nombre_propietario }}</td>
+				<td>{{ vehiculo.identificacion_propietario }}</td>
+				<td>{{ vehiculo.placa }}</td>
+				<td>{{ vehiculo.marca }}</td>
+				<td>{{ vehiculo.linea }}</td>
+				<td>{{ vehiculo.modelo }}</td>
+				<td>{{ vehiculo.capacidad_personas }}</td>
+				<td>{{ vehiculo.clase_vehiculo }}</td>
+				<td>{{ vehiculo.cilindraje }}</td>
+				<td>{{ vehiculo.numero_chasis }}</td>
+				<td>{{ vehiculo.tipo_combustible }}</td>
+				<td>{{ vehiculo.numero_motor }}</td>
+				<td>{{ vehiculo.tipo_carroceria }}</td>
+				<td>{{ vehiculo.color }}</td>
+				<td>{{ vehiculo.vin }}</td>
+				<td>{{ vehiculo.numero_ejes }}</td>
+				<td>{{ vehiculo.conductor_idconductor }}</td>
+				<td>{{ vehiculo.adjuntar_archivos_iddocumento }}</td>
+				<td>{{ vehiculo.ubicacion_idubicacion }}</td>
+			</tr>
+			{% endfor %}
+		</tbody>
+	</table> 
+</div>
+</div>
+</div>
+	<br>				
+	<div align="center" class="btn_crear mb-3">	
+		{% if perms.administrador.add_vehiculo%}
+		<a href="crear" type="button" class="btn btn-secondary">Crear vehículo</a>
+		{% endif%}
+	</div><br>
+{% endblock %}
+	
+{% block contenido %}
+{% endblock %}

@@ -1,0 +1,71 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Turnos</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+  {% include "estilos.html" %}
+  <p>
+  <h1 class="text-center">Turnos disponibles</h1>
+
+  {% include "mensaje.html" %}
+    
+  <div>
+	<table id="tablax" class="records_list table table-striped table-bordered table-hover">
+            <thead>
+              <tr>
+                <th>Opciones</th>
+				<th>#</th>
+				<th>Código del turno</th>
+				<th>Nombre</th>
+				<th>Fecha</th>
+				<th>Hora</th>
+				</tr>
+			</thead>
+			<tbody>
+
+					{% for turno in object_list %}
+				<tr>
+					<td>
+						<div class="btn-group">
+						
+						<a href="detalle/{{turno.idturno}}" title="Ver" type="button" class="btn btn-secondary">Ver </a>
+						{% if perms.administrador.change_turno%}
+						<a href="editar/{{turno.idturno}}" title="Editar" type="button" class="btn btn-dark">Editar </a>
+						{% endif%}
+						</div>  	   
+					</td>
+					<td>{{ forloop.counter }}</td>
+					<td>{{ turno.idturno}}</td>
+					<td>{{ turno.nombre}}</td>
+					<td>{{ turno.fecha}}</td>
+					<td>{{ turno.hora}}</td>
+				</tr>
+					{% endfor %}
+					
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>
+<br>
+<div align="center" class="btn_crear mb-3">
+	{% if perms.administrador.change_turno%}
+	<a href="crear" type="button" class="btn btn-secondary">Crear turno</a>
+	{% endif%}
+</div><br>
+{% endblock %}
+
+{% block contenido %}
+{% endblock %}

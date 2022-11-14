@@ -1,0 +1,97 @@
+<html xmlns="http://www.w3.org/1999/xhtml">
+    
+{% include "estilos.html" %}
+{% load static %}
+{% include "metaetiquetas.html" %}
+
+<!-- Estilos -->
+<link rel="stylesheet" href="/static/css/index.css">
+
+<div class="top-bar">
+    {% include "navbar.html" %}
+    {% include "funciones.html" %}
+</div>
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %}
+  <div class="hero-wrapper-single hero-wrapper-inner">
+    <div class="container">
+      <div class="theme-box">
+      </div>
+    </div>   
+  <div>
+  </div>
+  </div>
+</div>
+<!-- End background -->
+
+
+<div class="container emp-profile">
+            <form method="post">
+                <div class="row">
+                    <div class="col-md-4">
+                        <div class="profile-img">
+                            <img src="https://p16-sign-va.tiktokcdn.com/musically-maliva-obj/1663889442944006~c5_720x720.jpeg?x-expires=1667732400&x-signature=7Pe3cvHNi8nD575mnh7kzWr2EOw%3D" width="200" height="200"/>
+                           
+                        </div>
+                    </div>
+                    <div class="col-md-6">
+                        <div class="profile-head">
+                                    <br><br><br><h5>
+                                        Administrador
+                                    </h5>
+                                    <h6>
+                                        Empresa de transporte público
+                                    </h6>
+                                
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="row">
+                    <div class="col-md-4">
+                     
+                    </div>
+                    <div class="col-md-8">
+                        <div class="tab-content profile-tab" id="myTabContent">
+                            <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Nombre de usuario</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Administrador</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Dirección de correo electrónico</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>administrador@gmail.com</p>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="col-md-6">
+                                                <label>Contraseña</label>
+                                            </div>
+                                            <div class="col-md-6">
+                                                <p>Admin1234*</p>
+                                            </div>
+                                        </div>
+        
+                            </div>
+                            
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </form>           
+        </div>
+
+        <div class = "text-center">  
+            <a href="/index/"><button type="submit" class=" my-4 btn btn-primary">Volver al inicio</button></a>
+        </div>
+        </div>

@@ -1,0 +1,69 @@
+{% extends "index.html" %}
+{% load static %}
+
+{% block titulo %}
+	<title>Crear plan de rodamiento</title>
+{% endblock %}
+
+<!-- Background -->
+{% block imgbg %}
+<div data-bg="data:image/jpeg;base64,/9j/4AAQSkZJRgABAQAAAQABAAD/2wCEAAkGBwcKCAYICAYGBgcHBgoHCAcGBg8ICQcWIBEWFhURExMYHCggGBolGxMTITEhJSkrLi4uFx8zODMsNygtLisBCgoKDQ0NDg0NDisZFRkrKystKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrKysrK//AABEIAM0A9gMBIgACEQEDEQH/xAAXAAEBAQEAAAAAAAAAAAAAAAAAAQUC/8QAFRABAQAAAAAAAAAAAAAAAAAAAAH/xAAZAQEBAQEBAQAAAAAAAAAAAAABAAQCBQb/xAAUEQEAAAAAAAAAAAAAAAAAAAAA/9oADAMBAAIRAxEAPwDoEfXPPAQERUToQARABEBFAQEBAQEREVARABEBEQARABQEToACaAI0sACIiKgdCACICIgAiACgIiAgICAiAiIAIgAiAigICAAtAEamABARFQEQERADoQARARQEBAQEBERABEAEQERABEEBAEWgCNLAAiICAgICICIgB0IAKAiICAgICAiIioCIAIgIoCAgALQBGpgAQEBAQEREVARABEBOkBAQEBAREBARFQEQERABQEBAEWgCNLAAgICIgICIqAiAiIAIgAoCJ0AgICAiKiIgAiACICKAAtFAamAQQEBAQEREVARABEBEQARABQEToBARFQEQARAREAEEEWigNLAIAKAiICAiKgIgIiACIAIgIoCAgIHQCIiACIAIgIggC0UBpYBARQEBAQEBERFQEQARAREAFAQEBEQEDoRUBEBEQAQQBaKA1PPEAOkBEQEBAQEBERFQEQARAREEBAQEBEQEBAQOhABBBJooDSwCAigIHQCAgIiAgIioCICIgAiCAgIiAgICAiKiIgB0CATRQGpgEAEQQEBE6AQEBAQEREAEQARARQEBAQEBERFQEQAQQRaKA0sAgIiACIUBQEToBARFQEQARAREAEQEUBAQEBAQEQEQQBf/2Q==" class="hero-wrapper hero-wrapper-snp hero-wrapper-sm rocket-lazyload" style="">
+{% endblock %} 
+
+{% block enunciado %}
+{% endblock %}  
+<!-- End background -->
+
+{% block formulario %}
+{% load widget_tweaks %}
+{% include "estilos.html" %}
+	<p>
+    <div class="container">
+	  <h1 class="text-center">Crear plan de rodamiento</h1>
+              
+               <!-- CRUD -->
+               <form method="post" enctype="multipart/form-data">
+                {% csrf_token %}
+                  <div class="form-group">
+                    <label for="fecha" class="txt_negrita">Fecha de inicio</label>
+                    {{ form.fecha|add_class:"form-control" }}
+                  </div>
+                  <div class="form-group">
+                    <label for="hora " class="txt_negrita">Hora de salida del vehículo</label>
+                    {{ form.hora|add_class:"form-control" }}
+                  </div>
+                  <div class="form-group">
+                    <label for="inicio_ruta " class="txt_negrita">Lugar de inicio de la ruta</label>
+                    {{ form.inicio_ruta|add_class:"form-control" }}
+                  </div>
+                  <div class="form-group">
+                    <label for="numero_vehiculo " class="txt_negrita">Número del vehículo asignado al conductor</label>
+                    {{ form.numero_vehiculo|add_class:"form-control" }}
+                  </div>
+                  <div class="form-group">
+                    <label for="numero_ruta " class="txt_negrita">Número de la ruta</label>
+                    {{ form.numero_ruta|add_class:"form-control" }}
+                  </div>
+                    <div class="form-group">
+                    <label for="vehiculo_idvehiculo " class="txt_negrita">Código del vehiculo</label>
+                    {{ form.vehiculo_idvehiculo|add_class:"form-control" }}
+                  </div>
+                  <div class="form-group">
+                    <label for="ruta_idruta " class="txt_negrita">Código de ruta</label>
+                    {{ form.ruta_idruta|add_class:"form-control" }}
+                  </div>
+                  <div class="form-group">
+                    <label for="cargar_documento_iddocumento " class="txt_negrita">Código de documento</label>
+                    {{ form.cargar_documento_iddocumento|add_class:"form-control" }}
+                  </div>
+                  {% if perms.administrador.add_crear%}
+                  <button type="submit" class="btn btn-secondary">Aceptar</button> 
+                  {% endif%}
+                  <a href="./" type="submit" class="btn btn-dark">Cancelar</a>
+                </form>
+                <div><br></div>
+                <!-- FIN DEL CRUD -->
+    {% endblock %}
+    
+    {% block contenido %}
+    {% endblock %}
